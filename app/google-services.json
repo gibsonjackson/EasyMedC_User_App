@@ -1,0 +1,126 @@
+{
+  "project_info": {
+    "project_number": "2350897725",
+    "project_id": "cloudmessagetest-5ef77",
+    "storage_bucket": "cloudmessagetest-5ef77.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:2350897725:android:23677eacc6eea830492854",
+        "android_client_info": {
+          "package_name": "com.anvaishy.easymedc_user_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "2350897725-kttff7vupbvvs75m7hrif1hhnrdoc3gp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD87B-TV26o2hb49KIJnb4Szwj_-sgf9uY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "2350897725-kttff7vupbvvs75m7hrif1hhnrdoc3gp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:2350897725:android:050c264ab45e4fdf492854",
+        "android_client_info": {
+          "package_name": "com.anvaishy.easytmedc_receptionist_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "2350897725-kttff7vupbvvs75m7hrif1hhnrdoc3gp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD87B-TV26o2hb49KIJnb4Szwj_-sgf9uY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "2350897725-kttff7vupbvvs75m7hrif1hhnrdoc3gp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:2350897725:android:7177d09e93aa4dc5492854",
+        "android_client_info": {
+          "package_name": "com.example.cloudmessagesender"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "2350897725-kttff7vupbvvs75m7hrif1hhnrdoc3gp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD87B-TV26o2hb49KIJnb4Szwj_-sgf9uY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "2350897725-kttff7vupbvvs75m7hrif1hhnrdoc3gp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:2350897725:android:f4dc44fd67bfa8d7492854",
+        "android_client_info": {
+          "package_name": "com.example.cloudmessagetest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "2350897725-kttff7vupbvvs75m7hrif1hhnrdoc3gp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD87B-TV26o2hb49KIJnb4Szwj_-sgf9uY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "2350897725-kttff7vupbvvs75m7hrif1hhnrdoc3gp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
