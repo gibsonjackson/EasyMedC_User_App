@@ -54,7 +54,7 @@ public class GoogleSignin extends AppCompatActivity {
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
         if (firebaseUser != null)
         {
-            startActivity(new Intent(this, StudentProfile.class)
+            startActivity(new Intent(this, HomePageActivity.class)
                     .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
         }
     }
