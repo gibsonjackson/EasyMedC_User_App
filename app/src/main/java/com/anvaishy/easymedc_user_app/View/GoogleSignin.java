@@ -54,8 +54,9 @@ public class GoogleSignin extends AppCompatActivity {
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
         if (firebaseUser != null)
         {
-            startActivity(new Intent(this, HomePageActivity.class)
+            startActivity(new Intent(this, StudentProfile.class)
                     .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+            finish();
         }
     }
 
@@ -64,7 +65,6 @@ public class GoogleSignin extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 100)
         {
-            displayToast("Google Sign In Successful!");
             Task<GoogleSignInAccount> signInAccountTask = GoogleSignIn.getSignedInAccountFromIntent(data);
             if (signInAccountTask.isSuccessful())
             {
@@ -79,8 +79,8 @@ public class GoogleSignin extends AppCompatActivity {
                                     public void onComplete(@NonNull Task<AuthResult> task) {
                                         if (task.isSuccessful())
                                         {
-                                            displayToast("Firebase Authentication Successful!");
                                             startActivity(new Intent(GoogleSignin.this, StudentProfile.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+                                            finish();
                                         }
                                         else
                                         {

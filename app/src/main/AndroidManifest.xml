@@ -16,6 +16,9 @@
         android:theme="@style/Theme.EasyMedC_User_App"
         tools:targetApi="31">
         <activity
+            android:name=".View.EditProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".View.HomePageActivity"
             android:exported="false" />
         <activity

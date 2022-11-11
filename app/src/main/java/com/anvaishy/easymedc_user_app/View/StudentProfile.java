@@ -6,9 +6,14 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 
 import com.anvaishy.easymedc_user_app.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class StudentProfile extends AppCompatActivity {
 
@@ -20,5 +25,30 @@ public class StudentProfile extends AppCompatActivity {
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("Student Profile");
+
+        // To go in StudentProfileVM
+        FirebaseAuth firebaseAuth;
+        firebaseAuth = FirebaseAuth.getInstance();
+        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+
+        TextView name = findViewById(R.id.name);
+        name.append(firebaseUser.getDisplayName());
+
+        TextView email = findViewById(R.id.email);
+        email.append(firebaseUser.getEmail());
+
+        String emailID = firebaseUser.getEmail();
+        StringBuilder studentID = new StringBuilder();
+        for (int i = 0; i < 9; i++)
+        {
+            studentID.append(emailID.charAt(i));
+        }
+        TextView studID = findViewById(R.id.student_id);
+        studID.append(studentID);
+    }
+
+    public void goToEditProfile(View view) {
+        Intent intent = new Intent(this, EditProfileActivity.class);
+        startActivity(intent);
     }
 }

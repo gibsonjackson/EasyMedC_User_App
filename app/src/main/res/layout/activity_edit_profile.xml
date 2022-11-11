@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".View.EditProfileActivity">
+
+    <include
+        layout="@layout/toolbar_main"
+        android:id="@+id/main_toolbar" />
+
+    <Spinner
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/main_toolbar"
+        android:id="@+id/hostel_options"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Light"
+        android:spinnerMode="dropdown" />
+
+    <TextView
+        android:id="@+id/room_no_label"
+        app:layout_constraintTop_toBottomOf="@id/hostel_options"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        android:text="Room No: " />
+
+    <EditText
+        android:layout_width="292dp"
+        android:layout_height="40dp"
+        app:layout_constraintStart_toEndOf="@+id/room_no_label"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/hostel_options"
+        android:layout_margin="10dp" />
+
+    <TextView
+        android:id="@+id/student_phone_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        android:text="Student Phone No: "
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/room_no_label" />
+
+    <EditText
+        android:layout_width="240dp"
+        android:layout_height="40dp"
+        android:layout_margin="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/student_phone_label"
+        app:layout_constraintTop_toBottomOf="@id/room_no_label" />
+
+    <TextView
+        android:id="@+id/guardian_phone_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        android:text="Guardian Phone No: "
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/student_phone_label" />
+
+    <EditText
+        android:layout_width="240dp"
+        android:layout_height="40dp"
+        android:layout_margin="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/guardian_phone_label"
+        app:layout_constraintTop_toBottomOf="@id/student_phone_label" />
+
+    <Button
+        app:layout_constraintTop_toBottomOf="@id/guardian_phone_label"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:id="@+id/back_button"
+        android:onClick="goBack"
+        android:text="Back" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
