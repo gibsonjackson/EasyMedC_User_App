@@ -35,6 +35,7 @@
         android:text="Room No: " />
 
     <EditText
+        android:id="@+id/room_no_edit"
         android:layout_width="292dp"
         android:layout_height="40dp"
         app:layout_constraintStart_toEndOf="@+id/room_no_label"
@@ -53,6 +54,7 @@
         app:layout_constraintTop_toBottomOf="@id/room_no_label" />
 
     <EditText
+        android:id="@+id/student_phone_edit"
         android:layout_width="240dp"
         android:layout_height="40dp"
         android:layout_margin="10dp"
@@ -71,6 +73,7 @@
         app:layout_constraintTop_toBottomOf="@id/student_phone_label" />
 
     <EditText
+        android:id="@+id/guardian_phone_edit"
         android:layout_width="240dp"
         android:layout_height="40dp"
         android:layout_margin="10dp"
@@ -80,6 +83,17 @@
 
     <Button
         app:layout_constraintTop_toBottomOf="@id/guardian_phone_label"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:id="@+id/save_button_profile"
+        android:onClick="updateProfile"
+        android:text="Save" />
+
+    <Button
+        app:layout_constraintTop_toBottomOf="@id/save_button_profile"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_width="wrap_content"
