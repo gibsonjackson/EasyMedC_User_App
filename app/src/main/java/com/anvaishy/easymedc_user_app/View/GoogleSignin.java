@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.anvaishy.easymedc_user_app.Model.User;
 import com.anvaishy.easymedc_user_app.R;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -24,6 +25,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class GoogleSignin extends AppCompatActivity {
     SignInButton signInButton;
@@ -79,6 +82,22 @@ public class GoogleSignin extends AppCompatActivity {
                                     public void onComplete(@NonNull Task<AuthResult> task) {
                                         if (task.isSuccessful())
                                         {
+                                            FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+                                            String emailID = firebaseUser.getEmail();
+                                            FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+                                            // IMP: NEED TO CHECK IF USER ALREADY EXISTS OR NOT
+                                            User user = new User();
+                                            user.setName(firebaseUser.getDisplayName());
+                                            user.setEmail(firebaseUser.getEmail());
+                                            StringBuilder studentID = new StringBuilder();
+                                            for (int i = 0; i < 9; i++)
+                                            {
+                                                studentID.append(emailID.charAt(i));
+                                            }
+                                            user.setStudentID(studentID.toString());
+                                            db.collection("Users").add(user);
+
                                             startActivity(new Intent(GoogleSignin.this, StudentProfile.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
                                             finish();
                                         }
