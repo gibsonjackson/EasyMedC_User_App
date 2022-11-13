@@ -42,7 +42,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/hostel_options"
         android:layout_margin="10dp"
-        android:hint="e.g. S240, VM422, M133" />
+        android:hint="e.g. S240, VM422, M153" />
 
     <TextView
         android:id="@+id/student_phone_label"

@@ -97,7 +97,7 @@ public class GoogleSignin extends AppCompatActivity {
                                             }
 
                                             CollectionReference collectionReference = db.collection("Users");
-                                            DocumentReference docRef = collectionReference.document(studentID.toString());
+                                            DocumentReference docRef = collectionReference.document(emailID);
                                             docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                                                 @Override
                                                 public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -108,7 +108,7 @@ public class GoogleSignin extends AppCompatActivity {
                                                             user.setName(firebaseUser.getDisplayName());
                                                             user.setEmail(firebaseUser.getEmail());
                                                             user.setStudentID(studentID.toString());
-                                                            db.collection("Users").document(studentID.toString()).set(user);
+                                                            db.collection("Users").document(emailID).set(user);
                                                         }
                                                     }
                                                 }

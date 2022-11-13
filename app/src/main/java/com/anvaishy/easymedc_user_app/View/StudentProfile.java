@@ -37,6 +37,14 @@ public class StudentProfile extends AppCompatActivity {
         actionBar.setTitle("Student Profile");
 
         // To go in StudentProfileVM
+        Button Document = findViewById(R.id.view_medical_history);
+        Document.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(StudentProfile.this,com.anvaishy.easymedc_user_app.View.DocumentUploadList.class );
+                startActivity(intent);
+            }
+        });
         FirebaseAuth firebaseAuth;
         firebaseAuth = FirebaseAuth.getInstance();
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
@@ -49,7 +57,7 @@ public class StudentProfile extends AppCompatActivity {
         }
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        DocumentReference docRef = db.collection("Users").document(studentID.toString());
+        DocumentReference docRef = db.collection("Users").document(emailID);
         docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
