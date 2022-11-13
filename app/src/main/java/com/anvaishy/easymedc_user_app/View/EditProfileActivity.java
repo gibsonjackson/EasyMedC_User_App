@@ -36,7 +36,7 @@ public class EditProfileActivity extends AppCompatActivity {
     FirebaseUser firebaseUser;
     StringBuilder studentID;
     User currentUser;
-
+    String emailID;
     EditText room_number;
     EditText student_phone;
     EditText guardian_phone;
@@ -64,13 +64,13 @@ public class EditProfileActivity extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
-        String emailID = firebaseUser.getEmail();
+        emailID = firebaseUser.getEmail();
         studentID = new StringBuilder();
         for (int i = 0; i < 9; i++)
         {
             studentID.append(emailID.charAt(i));
         }
-        DocumentReference docRef = db.collection("Users").document(studentID.toString());
+        DocumentReference docRef = db.collection("Users").document(emailID);
         docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
@@ -129,7 +129,7 @@ public class EditProfileActivity extends AppCompatActivity {
         else {
 
 
-            DocumentReference docRef = db.collection("Users").document(studentID.toString());
+            DocumentReference docRef = db.collection("Users").document(emailID);
             docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                 @Override
                 public void onSuccess(DocumentSnapshot documentSnapshot) {

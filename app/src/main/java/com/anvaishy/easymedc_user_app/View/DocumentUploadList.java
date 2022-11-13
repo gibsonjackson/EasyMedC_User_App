@@ -20,6 +20,7 @@ public class DocumentUploadList extends AppCompatActivity {
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("Medical History");
+
     }
 
     public void goToSelectFile(View view) {
