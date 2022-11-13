@@ -19,6 +19,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
@@ -26,6 +27,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class GoogleSignin extends AppCompatActivity {
@@ -87,16 +90,29 @@ public class GoogleSignin extends AppCompatActivity {
                                             FirebaseFirestore db = FirebaseFirestore.getInstance();
 
                                             // IMP: NEED TO CHECK IF USER ALREADY EXISTS OR NOT
-                                            User user = new User();
-                                            user.setName(firebaseUser.getDisplayName());
-                                            user.setEmail(firebaseUser.getEmail());
                                             StringBuilder studentID = new StringBuilder();
                                             for (int i = 0; i < 9; i++)
                                             {
                                                 studentID.append(emailID.charAt(i));
                                             }
-                                            user.setStudentID(studentID.toString());
-                                            db.collection("Users").add(user);
+
+                                            CollectionReference collectionReference = db.collection("Users");
+                                            DocumentReference docRef = collectionReference.document(studentID.toString());
+                                            docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                                    if (task.isSuccessful()) {
+                                                        DocumentSnapshot documentSnapshot = task.getResult();
+                                                        if (!documentSnapshot.exists()) {
+                                                            User user = new User();
+                                                            user.setName(firebaseUser.getDisplayName());
+                                                            user.setEmail(firebaseUser.getEmail());
+                                                            user.setStudentID(studentID.toString());
+                                                            db.collection("Users").document(studentID.toString()).set(user);
+                                                        }
+                                                    }
+                                                }
+                                            });
 
                                             startActivity(new Intent(GoogleSignin.this, StudentProfile.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
                                             finish();

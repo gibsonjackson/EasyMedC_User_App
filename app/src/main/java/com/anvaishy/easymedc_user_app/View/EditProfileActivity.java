@@ -14,9 +14,14 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.anvaishy.easymedc_user_app.Model.User;
 import com.anvaishy.easymedc_user_app.R;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.List;
@@ -26,6 +31,15 @@ public class EditProfileActivity extends AppCompatActivity {
     // Just for example, data to be fetched from database
     String[] array = {"Select Hostel", "Vyas", "Valmiki", "Shankar"};
     Spinner spinner;
+    FirebaseFirestore db;
+    FirebaseAuth firebaseAuth;
+    FirebaseUser firebaseUser;
+    StringBuilder studentID;
+    User currentUser;
+
+    EditText room_number;
+    EditText student_phone;
+    EditText guardian_phone;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,18 +49,46 @@ public class EditProfileActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("Edit Profile");
+
+        // UI variable initializations
         spinner = findViewById(R.id.hostel_options);
+        room_number = findViewById(R.id.room_no_edit);
+        student_phone = findViewById(R.id.student_phone_edit);
+        guardian_phone = findViewById(R.id.guardian_phone_edit);
         spinner.setFocusable(true);
         spinner.setFocusableInTouchMode(true);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, array);
         spinner.setAdapter(adapter);
+
+        // Firebase Variable Initializations
+        db = FirebaseFirestore.getInstance();
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseUser = firebaseAuth.getCurrentUser();
+        String emailID = firebaseUser.getEmail();
+        studentID = new StringBuilder();
+        for (int i = 0; i < 9; i++)
+        {
+            studentID.append(emailID.charAt(i));
+        }
+        DocumentReference docRef = db.collection("Users").document(studentID.toString());
+        docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                currentUser = documentSnapshot.toObject(User.class);
+
+                // Populating UI with values
+                if (currentUser.getHostel() != null) {
+                    int spinnerPosition = adapter.getPosition(currentUser.getHostel());
+                    spinner.setSelection(spinnerPosition);
+                }
+                if (currentUser.getRoomNo() != null) room_number.setText(currentUser.getRoomNo());
+                if (currentUser.getStudentPhoneNo() != null) student_phone.setText(currentUser.getStudentPhoneNo());
+                if (currentUser.getGuardianPhoneNo() != null) guardian_phone.setText(currentUser.getGuardianPhoneNo());
+            }
+        });
     }
 
     public void updateProfile(View view) {
-        EditText room_number = findViewById(R.id.room_no_edit);
-        EditText student_phone = findViewById(R.id.student_phone_edit);
-        EditText guardian_phone = findViewById(R.id.guardian_phone_edit);
-
         // Handling empty fields
         if (spinner.getSelectedItem().toString().equals("Select Hostel")) {
             Toast.makeText(this, "Please select a hostel!", Toast.LENGTH_SHORT).show();
@@ -82,6 +124,32 @@ public class EditProfileActivity extends AppCompatActivity {
         else if (!validatePhoneNo(guardian_phone.getText().toString())) {
             Toast.makeText(this, "Please enter valid Guardian Phone Number!", Toast.LENGTH_SHORT).show();
             guardian_phone.requestFocus();
+        }
+
+        else {
+
+
+            DocumentReference docRef = db.collection("Users").document(studentID.toString());
+            docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                @Override
+                public void onSuccess(DocumentSnapshot documentSnapshot) {
+                    User currentUser = documentSnapshot.toObject(User.class);
+                    String studHostel = spinner.getSelectedItem().toString();
+                    currentUser.setHostel(studHostel);
+
+                    String studRoomNo = room_number.getText().toString();
+                    currentUser.setRoomNo(studRoomNo);
+
+                    String studPhoneNo = student_phone.getText().toString();
+                    currentUser.setStudentPhoneNo(studPhoneNo);
+
+                    String studGuardPhoneNo = guardian_phone.getText().toString();
+                    currentUser.setGuardianPhoneNo(studGuardPhoneNo);
+
+                    docRef.set(currentUser);
+                    Toast.makeText(EditProfileActivity.this, "Profile Successfully Updated!", Toast.LENGTH_SHORT).show();
+                }
+            });
         }
     }
 
