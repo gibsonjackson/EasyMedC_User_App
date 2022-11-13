@@ -108,13 +108,12 @@ public class GoogleSignin extends AppCompatActivity {
                                                             user.setName(firebaseUser.getDisplayName());
                                                             user.setEmail(firebaseUser.getEmail());
                                                             user.setStudentID(studentID.toString());
-                                                            while (db.collection("Users").document(emailID).set(user) == null);
-                                                            Toast.makeText(GoogleSignin.this, "Sign In Successful!", Toast.LENGTH_SHORT).show();
+                                                            db.collection("Users").document(emailID).set(user);
                                                         }
                                                     }
                                                 }
                                             });
-                                            
+
                                             startActivity(new Intent(GoogleSignin.this, StudentProfile.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
                                             finish();
                                         }
