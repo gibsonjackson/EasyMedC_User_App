@@ -130,6 +130,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Edit"
+        android:background="@drawable/mybutton"
         android:layout_margin="10dp"
         android:onClick="goToEditProfile"
         tools:ignore="OnClick" />
@@ -141,6 +142,7 @@
         android:id="@+id/view_medical_history"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/mybutton"
         android:text="View Medical History"
         android:layout_margin="10dp" />
 
