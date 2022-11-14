@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -30,6 +31,8 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.concurrent.TimeUnit;
 
 public class GoogleSignin extends AppCompatActivity {
     SignInButton signInButton;
@@ -113,6 +116,13 @@ public class GoogleSignin extends AppCompatActivity {
                                                     }
                                                 }
                                             });
+                                            
+                                            try {
+                                                TimeUnit.SECONDS.sleep(3);
+                                            }
+                                            catch (Exception e) {
+                                                e.printStackTrace();
+                                            }
 
                                             startActivity(new Intent(GoogleSignin.this, StudentProfile.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
                                             finish();
