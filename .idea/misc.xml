@@ -3,6 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Sriram/AndroidStudioProjects/EasyMedC_User_App/app/src/main/res/drawable-v24/outline_menu_24.xml" value="0.1335" />
+        <entry key="..\:/Users/Sriram/AndroidStudioProjects/EasyMedC_User_App/app/src/main/res/layout/activity_document_upload_list.xml" value="0.17864583333333334" />
+        <entry key="..\:/Users/Sriram/AndroidStudioProjects/EasyMedC_User_App/app/src/main/res/layout/activity_home_page.xml" value="0.1" />
+        <entry key="..\:/Users/Sriram/AndroidStudioProjects/EasyMedC_User_App/app/src/main/res/layout/activity_navigation_drawer.xml" value="0.1" />
+        <entry key="..\:/Users/Sriram/AndroidStudioProjects/EasyMedC_User_App/app/src/main/res/layout/drawer_layout.xml" value="0.17760416666666667" />
+        <entry key="..\:/Users/Sriram/AndroidStudioProjects/EasyMedC_User_App/app/src/main/res/menu/navigation_menu.xml" value="0.1465811965811966" />
         <entry key="..\:/Users/ankesssh/Desktop/SDPD USER/app/src/main/res/layout/activity_document_upload_list.xml" value="0.1" />
         <entry key="..\:/Users/ankesssh/Desktop/SDPD USER/app/src/main/res/layout/activity_edit_profile.xml" value="0.1" />
         <entry key="..\:/Users/ankesssh/Desktop/SDPD USER/app/src/main/res/layout/activity_home_page_view.xml" value="0.152" />
@@ -12,7 +18,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

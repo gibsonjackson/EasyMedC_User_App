@@ -4,11 +4,14 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.anvaishy.easymedc_user_app.Model.User;
@@ -35,6 +38,8 @@ public class StudentProfile extends AppCompatActivity {
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("Student Profile");
+        actionBar.setHomeAsUpIndicator(R.drawable.outline_menu_24);
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
         // To go in StudentProfileVM
         Button Document = findViewById(R.id.view_medical_history);
@@ -89,5 +94,18 @@ public class StudentProfile extends AppCompatActivity {
     public void goToEditProfile(View view) {
         Intent intent = new Intent(this, EditProfileActivity.class);
         startActivity(intent);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem menuItem) {
+        switch (menuItem.getItemId()) {
+            case android.R.id.home:
+                Intent intent = new Intent(this, NavigationDrawerActivity.class);
+                startActivity(intent);
+                overridePendingTransition(0, R.anim.slide);
+                return true;
+            default:
+                return super.onOptionsItemSelected(menuItem);
+        }
     }
 }
