@@ -90,6 +90,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:id="@+id/save_button_profile"
+        android:background="@drawable/mybutton"
         android:onClick="updateProfile"
         android:text="Save" />
 
@@ -101,6 +102,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:id="@+id/back_button"
+        android:background="@drawable/mybutton"
         android:onClick="goBack"
         android:text="Back" />
 

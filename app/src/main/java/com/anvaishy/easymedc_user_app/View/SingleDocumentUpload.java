@@ -113,6 +113,9 @@ public class SingleDocumentUpload extends AppCompatActivity {
                     docRef.document().set(data);
 
                     Toast.makeText(SingleDocumentUpload.this, "Uploaded Successfully", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(SingleDocumentUpload.this,DocumentUploadList.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
                 } else {
                     dialog.dismiss();
                     Toast.makeText(SingleDocumentUpload.this, "UploadedFailed", Toast.LENGTH_SHORT).show();
