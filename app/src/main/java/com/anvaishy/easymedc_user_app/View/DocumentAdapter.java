@@ -1,61 +1,61 @@
 package com.anvaishy.easymedc_user_app.View;
 
-import android.content.Intent;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.annotation.Nullable;
+
 import com.anvaishy.easymedc_user_app.Model.Document;
 import com.anvaishy.easymedc_user_app.R;
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.firebase.ui.database.FirebaseRecyclerOptions;
-import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
-import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 
-public class DocumentAdapter extends FirestoreRecyclerAdapter<
-        Document, DocumentAdapter.personsViewholder> {
+import java.util.ArrayList;
 
-public DocumentAdapter(
-@NonNull FirestoreRecyclerOptions<Document> options)
-        {
-        super(options);
+public class DocumentAdapter  extends ArrayAdapter<Document> {
+
+    public DocumentAdapter(@NonNull Context context, ArrayList<Document> dataModalArrayList) {
+        super(context, 0, dataModalArrayList);
+    }
+    @NonNull
+    @Override
+    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+        // below line is use to inflate the
+        // layout for our item of list view.
+        View listitemView = convertView;
+        if (listitemView == null) {
+            listitemView = LayoutInflater.from(getContext()).inflate(R.layout.documentcard, parent, false);
         }
-@Override
-protected void
-        onBindViewHolder(@NonNull personsViewholder holder,
-        int position, @NonNull Document model)
-        {
-        holder.firstname.setText(model.getDocname());
-        System.out.print(model.getDocname()+" "+model.getDocurl());
-        holder.lastname.setOnClickListener(new View.OnClickListener() {
+
+        // after inflating an item of listview item
+        // we are getting data from array list inside
+        // our modal class.
+        Document dataModal = getItem(position);
+
+        // initializing our UI components of list view item.
+        TextView nameTV = listitemView.findViewById(R.id.docname);
+        Button courseIV = listitemView.findViewById(R.id.docurl);
+
+        // after initializing our items we are
+        // setting data to our view.
+        // below line is use to set data to our text view.
+        nameTV.setText(dataModal.getName());
+
+        // below line is use to add item click listener
+        // for our item of list view.
+        courseIV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                // on the item click on our list view.
+                // we are displaying a toast message.
+                Toast.makeText(getContext(), "Item clicked is : " + dataModal.getLink(), Toast.LENGTH_SHORT).show();
             }
         });
-        }
-@NonNull
-@Override
-public personsViewholder
-        onCreateViewHolder(@NonNull ViewGroup parent,
-        int viewType)
-        {
-        View view
-        = LayoutInflater.from(parent.getContext())
-        .inflate(R.layout.documentcard, parent, false);
-        return new DocumentAdapter.personsViewholder(view);
-        }
-class personsViewholder extends RecyclerView.ViewHolder {
-    TextView firstname;
-    Button lastname;
-    public personsViewholder(@NonNull View itemView)
-    {
-        super(itemView);
-        firstname = itemView.findViewById(R.id.docname);
-        lastname = itemView.findViewById(R.id.docurl);
+        return listitemView;
     }
-}
 }

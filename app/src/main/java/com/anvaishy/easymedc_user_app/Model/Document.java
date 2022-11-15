@@ -1,19 +1,23 @@
 package com.anvaishy.easymedc_user_app.Model;
 
 public class Document {
-    String docname;
-    String docurl;
+    String name;
+    String link;
     public Document() {}//Left blank for firebase to fill wrapper code
-    public String getDocname() {
-        return docname;
+    public Document(String name,String link){
+        this.name=name;
+        this.link = link;
     }
-    public void setDocname(String docname) {
-        this.docname = docname;
+    public String getName() {
+        return name;
     }
-    public String getDocurl() {
-        return docurl;
+    public void setName(String docname) {
+        this.name = name;
     }
-    public void setDocurl(String docurl) {
-        this.docurl = docurl;
+    public String getLink() {
+        return link;
+    }
+    public void setlink(String docurl) {
+        this.link = link;
     }
 }
