@@ -1,4 +1,4 @@
-package com.anvaishy.easymedc_user_app.View;
+package com.anvaishy.easymedc_user_app.view;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -6,25 +6,22 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.anvaishy.easymedc_user_app.Model.User;
+import com.anvaishy.easymedc_user_app.model.User;
 import com.anvaishy.easymedc_user_app.R;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-
-import java.util.List;
 
 public class EditProfileActivity extends AppCompatActivity {
 
@@ -49,6 +46,7 @@ public class EditProfileActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("Edit Profile");
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
         // UI variable initializations
         spinner = findViewById(R.id.hostel_options);
@@ -178,10 +176,26 @@ public class EditProfileActivity extends AppCompatActivity {
         return false;
     }
 
-    public void goBack(View view) {
-        Intent intent = new Intent(this, StudentProfile.class);
-        intent.setAction("From Edit Profile");
-        startActivity(intent);
-        finish();
+    @Override
+    public boolean onCreateOptionsMenu (Menu menu) {
+        getMenuInflater().inflate(R.menu.toolbar_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem menuItem) {
+        switch (menuItem.getItemId()) {
+            case android.R.id.home:
+                Intent intent = new Intent(this, StudentProfile.class);
+                startActivity(intent);
+                finish();
+                return true;
+            case R.id.house_button:
+                Intent intent1 = new Intent(this, HomePageActivity.class);
+                startActivity(intent1);
+                return true;
+            default:
+                return super.onOptionsItemSelected(menuItem);
+        }
     }
 }

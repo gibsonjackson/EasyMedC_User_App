@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".View.GoogleSignin">
+    tools:context=".view.GoogleSignin">
     <com.google.android.gms.common.SignInButton
         android:id="@+id/bt_sign_in"
         android:layout_width="wrap_content"

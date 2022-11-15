@@ -1,4 +1,4 @@
-package com.anvaishy.easymedc_user_app.View;
+package com.anvaishy.easymedc_user_app.view;
 
 import android.content.Context;
 import android.content.Intent;
@@ -14,9 +14,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.anvaishy.easymedc_user_app.Model.Document;
+import com.anvaishy.easymedc_user_app.model.Document;
 import com.anvaishy.easymedc_user_app.R;
-import com.anvaishy.easymedc_user_app.View.DocumentUploadList;
+
 import java.util.ArrayList;
 
 public class DocumentAdapter  extends ArrayAdapter<Document> {

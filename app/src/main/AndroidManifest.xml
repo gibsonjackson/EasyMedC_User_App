@@ -10,32 +10,38 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/appicon"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/appicon"
         android:supportsRtl="true"
         android:theme="@style/Theme.EasyMedC_User_App"
         tools:targetApi="31">
         <activity
-            android:name=".View.NavigationDrawerActivity"
+            android:name=".view.MedicalPassRequestListActivity"
             android:exported="false" />
         <activity
-            android:name=".View.EditProfileActivity"
+            android:name=".view.DoctorTimingActivity"
             android:exported="false" />
         <activity
-            android:name=".View.SingleDocumentUpload"
+            android:name=".view.NavigationDrawerActivity"
             android:exported="false" />
         <activity
-            android:name=".View.DocumentUploadList"
+            android:name=".view.EditProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".View.HomePageActivity"
+            android:name=".view.SingleDocumentUpload"
             android:exported="false" />
         <activity
-            android:name=".View.StudentProfile"
+            android:name=".view.DocumentUploadList"
             android:exported="false" />
         <activity
-            android:name=".View.SplashScreen"
+            android:name=".view.HomePageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.StudentProfile"
+            android:exported="false" />
+        <activity
+            android:name=".view.SplashScreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -44,7 +50,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".View.GoogleSignin"
+            android:name=".view.GoogleSignin"
             android:exported="false" />
     </application>
 

@@ -4,6 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".View.NavigationDrawerActivity">
+    android:background="#FFFFFF"
+    tools:context=".view.NavigationDrawerActivity">
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#FFFFFF"
+        android:layout_margin="15dp"
+        android:src="@drawable/outline_close_24"
+        android:id="@+id/close_button"
+        android:onClick="closeDrawer"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <ListView
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/close_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:clipToPadding="false"
+        android:id="@+id/navigation_list" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

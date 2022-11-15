@@ -1,4 +1,4 @@
-package com.anvaishy.easymedc_user_app.View;
+package com.anvaishy.easymedc_user_app.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 

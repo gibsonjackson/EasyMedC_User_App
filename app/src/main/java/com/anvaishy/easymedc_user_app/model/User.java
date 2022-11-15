@@ -1,4 +1,4 @@
-package com.anvaishy.easymedc_user_app.Model;
+package com.anvaishy.easymedc_user_app.model;
 
 public class User {
     private String name;

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".View.EditProfileActivity">
+    tools:context=".view.EditProfileActivity">
 
     <include
         layout="@layout/toolbar_main"
@@ -88,22 +88,24 @@
         app:layout_constraintRight_toRightOf="parent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="15dp"
         android:id="@+id/save_button_profile"
         android:background="@drawable/mybutton"
         android:onClick="updateProfile"
         android:text="Save" />
 
-    <Button
-        app:layout_constraintTop_toBottomOf="@id/save_button_profile"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:id="@+id/back_button"
-        android:background="@drawable/mybutton"
-        android:onClick="goBack"
-        android:text="Back" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_margin="20dp"
+        android:backgroundTint="#FF0000"
+        android:src="@drawable/ambulance"
+        app:tint="#FFFFFF"
+        app:maxImageSize="36dp"
+        app:borderWidth="0dp"
+        android:id="@+id/sos_button"
+        android:contentDescription="SOS" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

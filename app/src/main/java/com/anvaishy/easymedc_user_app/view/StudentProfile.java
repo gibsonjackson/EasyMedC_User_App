@@ -1,32 +1,26 @@
-package com.anvaishy.easymedc_user_app.View;
+package com.anvaishy.easymedc_user_app.view;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
-import com.anvaishy.easymedc_user_app.Model.User;
+import com.anvaishy.easymedc_user_app.model.User;
 import com.anvaishy.easymedc_user_app.R;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.model.Document;
-
-import org.w3c.dom.Text;
 
 public class StudentProfile extends AppCompatActivity {
 
@@ -46,7 +40,7 @@ public class StudentProfile extends AppCompatActivity {
         Document.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(StudentProfile.this,com.anvaishy.easymedc_user_app.View.DocumentUploadList.class );
+                Intent intent = new Intent(StudentProfile.this,com.anvaishy.easymedc_user_app.view.DocumentUploadList.class );
                 startActivity(intent);
             }
         });
@@ -91,6 +85,12 @@ public class StudentProfile extends AppCompatActivity {
         });
     }
 
+    @Override
+    public boolean onCreateOptionsMenu (Menu menu) {
+        getMenuInflater().inflate(R.menu.toolbar_menu, menu);
+        return true;
+    }
+
     public void goToEditProfile(View view) {
         Intent intent = new Intent(this, EditProfileActivity.class);
         startActivity(intent);
@@ -102,7 +102,11 @@ public class StudentProfile extends AppCompatActivity {
             case android.R.id.home:
                 Intent intent = new Intent(this, NavigationDrawerActivity.class);
                 startActivity(intent);
-                overridePendingTransition(0, R.anim.slide);
+                overridePendingTransition(0, R.anim.slide_right);
+                return true;
+            case R.id.house_button:
+                Intent intent1 = new Intent(this, HomePageActivity.class);
+                startActivity(intent1);
                 return true;
             default:
                 return super.onOptionsItemSelected(menuItem);
