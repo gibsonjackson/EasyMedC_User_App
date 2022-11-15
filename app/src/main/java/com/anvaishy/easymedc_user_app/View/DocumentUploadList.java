@@ -1,35 +1,29 @@
 package com.anvaishy.easymedc_user_app.View;
 
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.anvaishy.easymedc_user_app.ItemClickListener;
 import com.anvaishy.easymedc_user_app.Model.Document;
 import com.anvaishy.easymedc_user_app.R;
-import com.firebase.ui.firestore.FirestoreRecyclerOptions;
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class DocumentUploadList extends AppCompatActivity {
-    ListView coursesLV;
+    ListView DocumentListView;
     ArrayList<Document> dataModalArrayList;
     FirebaseFirestore db;
 
@@ -39,7 +33,7 @@ public class DocumentUploadList extends AppCompatActivity {
         setContentView(R.layout.activity_document_upload_list);
 
         // below line is use to initialize our variables
-        coursesLV = findViewById(R.id.docList);
+        DocumentListView = findViewById(R.id.docList);
         dataModalArrayList = new ArrayList<>();
 
         // initializing our variable for firebase
@@ -74,8 +68,8 @@ public class DocumentUploadList extends AppCompatActivity {
 
                                 String docname = (String) d.get("name");
                                 String docurl = (String) d.get("link");
-                                Log.e("Data",docname+" "+docurl+"\n");
-                                Document dataModal = new Document(docname,docurl);
+                                Log.e("Data", docname + " " + docurl + "\n");
+                                Document dataModal = new Document(docname, docurl);
                                 // after getting data from Firebase we are
                                 // storing that data in our array list
                                 dataModalArrayList.add(dataModal);
@@ -85,7 +79,10 @@ public class DocumentUploadList extends AppCompatActivity {
 
                             // after passing this array list to our adapter
                             // class we are setting our adapter to our list view.
-                            coursesLV.setAdapter(adapter);
+                            Log.e("URL",dataModalArrayList.get(0).getName());
+                            DocumentListView.setAdapter(adapter);
+
+
                         } else {
                             // if the snapshot is empty we are displaying a toast message.
                             Toast.makeText(DocumentUploadList.this, "No data found in Database", Toast.LENGTH_SHORT).show();
@@ -101,5 +98,8 @@ public class DocumentUploadList extends AppCompatActivity {
     public void goToSelectFile(View view) {
         Intent intent = new Intent(this,SingleDocumentUpload.class);
         startActivity(intent);
+    }
+    public void selector(String url){
+
     }
 }

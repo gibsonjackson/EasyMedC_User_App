@@ -1,6 +1,8 @@
 package com.anvaishy.easymedc_user_app.View;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +16,7 @@ import androidx.annotation.Nullable;
 
 import com.anvaishy.easymedc_user_app.Model.Document;
 import com.anvaishy.easymedc_user_app.R;
-
+import com.anvaishy.easymedc_user_app.View.DocumentUploadList;
 import java.util.ArrayList;
 
 public class DocumentAdapter  extends ArrayAdapter<Document> {
@@ -51,9 +53,12 @@ public class DocumentAdapter  extends ArrayAdapter<Document> {
         courseIV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // on the item click on our list view.
-                // we are displaying a toast message.
-                Toast.makeText(getContext(), "Item clicked is : " + dataModal.getLink(), Toast.LENGTH_SHORT).show();
+                String url = dataModal.getLink();
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(url));
+
+                Toast.makeText(getContext(), "Downloading : " + dataModal.getName(), Toast.LENGTH_SHORT).show();
+                getContext().startActivity(i);
             }
         });
         return listitemView;
