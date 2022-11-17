@@ -18,7 +18,7 @@ public class NavigationDrawerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation_drawer);
 
-        String[] pages = {"Doctor List", "Upload Documents", "Medical Pass Requests", "My Profile"};
+        String[] pages = {"Doctor Timings", "Medical History", "Medical Pass Requests", "My Profile"};
         ListView listView = findViewById(R.id.navigation_list);
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, pages);
         listView.setAdapter(arrayAdapter);

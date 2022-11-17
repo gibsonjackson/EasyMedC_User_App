@@ -46,7 +46,7 @@ public class SingleDocumentUpload extends AppCompatActivity {
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("Upload Document");
-        actionBar.setDisplayHomeAsUpEnabled(true);
+//        actionBar.setDisplayHomeAsUpEnabled(true);
 
         upload = findViewById(R.id.selectorFile);
         ed = findViewById(R.id.documentname);
