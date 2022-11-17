@@ -51,8 +51,8 @@ public class NavigationDrawerActivity extends AppCompatActivity {
     }
 
     public void closeDrawer (View view) {
-        Intent intent = new Intent(this, HomePageActivity.class);
-        startActivity(intent);
+
+        finish();
         overridePendingTransition(R.anim.slide_left, 0);
     }
 }
