@@ -135,17 +135,6 @@
         android:onClick="goToEditProfile"
         tools:ignore="OnClick" />
 
-    <Button
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/edit_button_profile"
-        android:id="@+id/view_medical_history"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/mybutton"
-        android:text="View Medical History"
-        android:layout_margin="15dp" />
-
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

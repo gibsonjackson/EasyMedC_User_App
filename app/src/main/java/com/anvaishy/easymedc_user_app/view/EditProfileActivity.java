@@ -46,7 +46,6 @@ public class EditProfileActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("Edit Profile");
-        actionBar.setDisplayHomeAsUpEnabled(true);
 
         // UI variable initializations
         spinner = findViewById(R.id.hostel_options);

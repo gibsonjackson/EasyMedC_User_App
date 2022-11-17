@@ -36,14 +36,6 @@ public class StudentProfile extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
 
         // To go in StudentProfileVM
-        Button Document = findViewById(R.id.view_medical_history);
-        Document.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(StudentProfile.this,com.anvaishy.easymedc_user_app.view.DocumentUploadList.class );
-                startActivity(intent);
-            }
-        });
         FirebaseAuth firebaseAuth;
         firebaseAuth = FirebaseAuth.getInstance();
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
