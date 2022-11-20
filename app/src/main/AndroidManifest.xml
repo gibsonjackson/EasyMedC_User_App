@@ -17,6 +17,9 @@
         android:theme="@style/Theme.EasyMedC_User_App"
         tools:targetApi="31">
         <activity
+            android:name=".view.NewRequestActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.MedicalPassRequestListActivity"
             android:exported="false" />
         <activity
