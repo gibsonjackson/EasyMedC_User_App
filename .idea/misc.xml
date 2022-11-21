@@ -3,8 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/ankesssh/Desktop/SDPD USER/app/src/main/res/drawable/back.xml" value="0.107" />
         <entry key="..\:/Users/ankesssh/Desktop/SDPD USER/app/src/main/res/drawable/iconattemot.xml" value="0.106" />
         <entry key="..\:/Users/ankesssh/Desktop/SDPD USER/app/src/main/res/drawable/mybutton.xml" value="0.226" />
+        <entry key="..\:/Users/ankesssh/Desktop/SDPD USER/app/src/main/res/drawable/roundimagesample.xml" value="0.106" />
         <entry key="..\:/Users/ankesssh/Desktop/SDPD USER/app/src/main/res/layout/activity_document_upload_list.xml" value="0.23645833333333333" />
         <entry key="..\:/Users/ankesssh/Desktop/SDPD USER/app/src/main/res/layout/activity_document_view.xml" value="0.1" />
         <entry key="..\:/Users/ankesssh/Desktop/SDPD USER/app/src/main/res/layout/activity_edit_profile.xml" value="0.4" />
@@ -18,6 +20,8 @@
         <entry key="..\:/Users/ankesssh/Desktop/SDPD USER/app/src/main/res/layout/documentcard.xml" value="0.264" />
         <entry key="..\:/Users/ankesssh/Desktop/SDPD USER/app/src/main/res/layout/google_signin.xml" value="0.23645833333333333" />
         <entry key="..\:/Users/ankesssh/Desktop/SDPD USER/app/src/main/res/layout/splashscreen.xml" value="0.23645833333333333" />
+        <entry key="..\:/Users/ankesssh/Desktop/SDPD USER/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.107" />
+        <entry key="..\:/Users/ankesssh/Desktop/SDPD USER/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.107" />
       </map>
     </option>
   </component>
