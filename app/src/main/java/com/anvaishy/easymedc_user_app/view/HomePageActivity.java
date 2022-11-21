@@ -7,6 +7,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.anvaishy.easymedc_user_app.R;
 
@@ -34,5 +35,25 @@ public class HomePageActivity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(menuItem);
         }
+    }
+
+    public void GoToDoctorList(View view) {
+        Intent intent = new Intent(HomePageActivity.this,DoctorTimingActivity.class);
+        startActivity(intent);
+    }
+
+    public void MedicalHistory(View view) {
+        Intent intent = new Intent(HomePageActivity.this,DocumentUploadList.class);
+        startActivity(intent);
+    }
+
+    public void MedicalPass(View view) {
+        Intent intent = new Intent(HomePageActivity.this,MedicalPassRequestListActivity.class);
+        startActivity(intent);
+    }
+
+    public void Profile(View view) {
+        Intent intent = new Intent(HomePageActivity.this,StudentProfile.class);
+        startActivity(intent);
     }
 }
