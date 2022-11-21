@@ -18,14 +18,18 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.anvaishy.easymedc_user_app.R;
+import com.anvaishy.easymedc_user_app.model.MedicalPassRequestGlobal;
 import com.anvaishy.easymedc_user_app.model.MedicalPassRequestUser;
+import com.anvaishy.easymedc_user_app.model.User;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.sql.Time;
 import java.text.SimpleDateFormat;
@@ -161,23 +165,24 @@ public class NewRequestActivity extends AppCompatActivity {
             Toast.makeText(this, "Please enter description", Toast.LENGTH_SHORT).show();
             description.requestFocus();
         }
-        else if (arrivalTime.getText().toString().length() == 0) {
-            Toast.makeText(this, "Please enter arrival time", Toast.LENGTH_SHORT).show();
-            arrivalTime.requestFocus();
-        }
         else if (departTime.getText().toString().length() == 0) {
             Toast.makeText(this, "Please enter departure time", Toast.LENGTH_SHORT).show();
             departTime.requestFocus();
         }
+        else if (arrivalTime.getText().toString().length() == 0) {
+            Toast.makeText(this, "Please enter arrival time", Toast.LENGTH_SHORT).show();
+            arrivalTime.requestFocus();
+        }
+
         else {
             Date date = new Date(System.currentTimeMillis());
             Timestamp currentTime = new Timestamp(date);
-            if (arrivalTimestamp.compareTo(currentTime) < 0) {
-                Toast.makeText(this, "Please enter valid arrival time", Toast.LENGTH_SHORT).show();
+            if (departTimestamp.compareTo(currentTime) < 0) {
+                Toast.makeText(this, "Please enter valid departure time", Toast.LENGTH_SHORT).show();
             }
 
-            else if (departTimestamp.compareTo(arrivalTimestamp) < 0) {
-                Toast.makeText(this, "Please enter valid departure time", Toast.LENGTH_SHORT).show();
+            else if (arrivalTimestamp.compareTo(departTimestamp) < 0) {
+                Toast.makeText(this, "Please enter valid arrival time", Toast.LENGTH_SHORT).show();
             }
 
             else {
@@ -191,6 +196,23 @@ public class NewRequestActivity extends AppCompatActivity {
                         userRequest.setDepart(departTimestamp);
                         docRef.collection("Medical Pass Requests").add(userRequest);
                         Toast.makeText(NewRequestActivity.this, "Request Created Successfully!", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+                DocumentReference docRef1 = db.collection("Users").document(emailID);
+                docRef1.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        User currentUser = documentSnapshot.toObject(User.class);
+                        MedicalPassRequestGlobal globalRequest = new MedicalPassRequestGlobal();
+                        globalRequest.setName(currentUser.getName());
+                        globalRequest.setUid(currentUser.getStudentID());
+                        globalRequest.setPhoneNo(currentUser.getStudentPhoneNo());
+                        globalRequest.setDescription(description.getText().toString());
+                        globalRequest.setStatus(0);
+                        globalRequest.setArrival(arrivalTimestamp);
+                        globalRequest.setDepart(departTimestamp);
+                        db.collection("Medical Pass Requests").add(globalRequest);
                     }
                 });
             }

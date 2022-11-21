@@ -27,9 +27,9 @@ public class MedicalPassAdapter extends FirestoreRecyclerAdapter<MedicalPassRequ
         Log.d("ok1", request.getDescription());
         holder.description.setText(request.getDescription());
         holder.description.append("\n");
-        holder.description.append(request.getArrival().toDate().toString());
-        holder.description.append("\n");
         holder.description.append(request.getDepart().toDate().toString());
+        holder.description.append("\n");
+        holder.description.append(request.getArrival().toDate().toString());
         holder.arrival.setText(request.getArrival().toDate().toString());
         holder.depart.setText(request.getDepart().toDate().toString());
         holder.arrival.setTextColor(Color.BLACK);

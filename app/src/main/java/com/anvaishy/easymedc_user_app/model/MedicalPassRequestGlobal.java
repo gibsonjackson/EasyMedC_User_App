@@ -9,10 +9,10 @@ public class MedicalPassRequestGlobal {
     private String description;
     private int status;
     private Timestamp arrival;
-    private Timestamp departure;
+    private Timestamp depart;
 
-    public Timestamp getDeparture() {
-        return departure;
+    public Timestamp getDepart() {
+        return depart;
     }
 
     public Timestamp getArrival() {
@@ -27,8 +27,8 @@ public class MedicalPassRequestGlobal {
         return status;
     }
 
-    public void setDeparture(Timestamp departure) {
-        this.departure = departure;
+    public void setDepart(Timestamp depart) {
+        this.depart = depart;
     }
 
     public void setArrival(Timestamp arrival) {
