@@ -55,6 +55,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         android:text="Create"
+        android:onClick="createRequest"
         android:background="@drawable/mybutton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

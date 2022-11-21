@@ -20,8 +20,8 @@ public class MedicalPassRequestUser {
         this.arrival = arrival;
     }
 
-    public void setDeparture(Timestamp departure) {
-        this.depart = departure;
+    public void setDepart(Timestamp depart) {
+        this.depart = depart;
     }
 
     public int getStatus() {

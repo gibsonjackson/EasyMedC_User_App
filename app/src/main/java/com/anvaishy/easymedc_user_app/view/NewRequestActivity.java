@@ -15,15 +15,27 @@ import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.anvaishy.easymedc_user_app.R;
+import com.anvaishy.easymedc_user_app.model.MedicalPassRequestUser;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.Timestamp;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.sql.Time;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.Month;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.Locale;
 import java.util.TimeZone;
 
 public class NewRequestActivity extends AppCompatActivity {
@@ -31,6 +43,12 @@ public class NewRequestActivity extends AppCompatActivity {
     EditText description;
     EditText arrivalTime;
     EditText departTime;
+
+    Timestamp arrivalTimestamp;
+    Timestamp departTimestamp;
+
+    FirebaseFirestore db;
+    String emailID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,23 +60,28 @@ public class NewRequestActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("Create New Pass");
 
+        db = FirebaseFirestore.getInstance();
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+        emailID = firebaseUser.getEmail();
+
         description = findViewById(R.id.description_fill);
         arrivalTime = findViewById(R.id.arrival_time_fill);
         departTime = findViewById(R.id.depart_time_fill);
 
         arrivalTime.setOnClickListener(new View.OnClickListener() {
-            Calendar calendar = new GregorianCalendar(TimeZone.getTimeZone("GMT"));
-            final int year = calendar.get(Calendar.YEAR);
-            final int month = calendar.get(Calendar.MONTH);
-            final int date = calendar.get(Calendar.DATE);
-            final int hours = calendar.get(Calendar.HOUR);
-            final int minutes = calendar.get(Calendar.MINUTE);
+            Calendar calendar = new GregorianCalendar(TimeZone.getTimeZone("Asia/Calcutta"));
+            LocalDateTime localDateTime = LocalDateTime.now();
+            final int year = localDateTime.getYear();
+            final int month = localDateTime.getMonthValue();
+            final int date = localDateTime.getDayOfMonth();
+            final int hours = localDateTime.getHour();
+            final int minutes = localDateTime.getMinute();
             int sYear = year;
             int sMonth = month;
             int sDate = date;
             int sHour = hours;
             int sMinute = minutes;
-            boolean dateSet = false;
             @Override
             public void onClick(View view) {
                 arrivalTime.setText("");
@@ -70,9 +93,10 @@ public class NewRequestActivity extends AppCompatActivity {
                         calendar.set(sYear, sMonth, sDate, sHour, sMinute);
                         Date date = calendar.getTime();
                         Timestamp timestamp = new Timestamp(date);
+                        arrivalTimestamp = timestamp;
                         arrivalTime.setText(timestamp.toDate().toString());
                     }
-                }, hours, minutes, false);
+                }, sHour, sMinute, false);
                 timePickerDialog.show();
                 DatePickerDialog datePickerDialog = new DatePickerDialog(NewRequestActivity.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
@@ -81,20 +105,24 @@ public class NewRequestActivity extends AppCompatActivity {
                         sMonth = i1;
                         sDate = i2;
                     }
-                }, year, month, date);
+                }, sYear, sMonth - 1, sDate);
                 datePickerDialog.show();
             }
         });
 
         departTime.setOnClickListener(new View.OnClickListener() {
-            Calendar calendar = new GregorianCalendar(TimeZone.getTimeZone("GMT"));
-            final int year = calendar.get(Calendar.YEAR);
-            final int month = calendar.get(Calendar.MONTH);
-            final int date = calendar.get(Calendar.DATE);
-            final int hours = calendar.get(Calendar.HOUR);
-            final int minutes = calendar.get(Calendar.MINUTE);
-            int sYear, sMonth, sDate, sHour, sMinute;
-            boolean dateSet = false;
+            Calendar calendar = new GregorianCalendar(TimeZone.getTimeZone("Asia/Calcutta"));
+            LocalDateTime localDateTime = LocalDateTime.now();
+            final int year = localDateTime.getYear();
+            final int month = localDateTime.getMonthValue();
+            final int date = localDateTime.getDayOfMonth();
+            final int hours = localDateTime.getHour();
+            final int minutes = localDateTime.getMinute();
+            int sYear = year;
+            int sMonth = month;
+            int sDate = date;
+            int sHour = hours;
+            int sMinute = minutes;
             @Override
             public void onClick(View view) {
                 departTime.setText("");
@@ -106,9 +134,14 @@ public class NewRequestActivity extends AppCompatActivity {
                         calendar.set(sYear, sMonth, sDate, sHour, sMinute);
                         Date date = calendar.getTime();
                         Timestamp timestamp = new Timestamp(date);
-                        departTime.setText(timestamp.toDate().toString());
+                        departTimestamp = timestamp;
+                        StringBuilder timeSt = new StringBuilder(timestamp.toDate().toString());
+                        timeSt.setCharAt(20, 'I');
+                        timeSt.setCharAt(21, 'S');
+                        timeSt.setCharAt(22, 'T');
+                        departTime.setText(timeSt.toString());
                     }
-                }, hours, minutes, false);
+                }, sHour, sMinute, false);
                 timePickerDialog.show();
                 DatePickerDialog datePickerDialog = new DatePickerDialog(NewRequestActivity.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
@@ -116,12 +149,52 @@ public class NewRequestActivity extends AppCompatActivity {
                         sYear = i;
                         sMonth = i1;
                         sDate = i2;
-                        dateSet = true;
                     }
-                }, year, month, date);
+                }, sYear, sMonth - 1, sDate);
                 datePickerDialog.show();
             }
         });
+    }
+
+    public void createRequest(View view) {
+        if (description.getText().toString().length() == 0) {
+            Toast.makeText(this, "Please enter description", Toast.LENGTH_SHORT).show();
+            description.requestFocus();
+        }
+        else if (arrivalTime.getText().toString().length() == 0) {
+            Toast.makeText(this, "Please enter arrival time", Toast.LENGTH_SHORT).show();
+            arrivalTime.requestFocus();
+        }
+        else if (departTime.getText().toString().length() == 0) {
+            Toast.makeText(this, "Please enter departure time", Toast.LENGTH_SHORT).show();
+            departTime.requestFocus();
+        }
+        else {
+            Date date = new Date(System.currentTimeMillis());
+            Timestamp currentTime = new Timestamp(date);
+            if (arrivalTimestamp.compareTo(currentTime) < 0) {
+                Toast.makeText(this, "Please enter valid arrival time", Toast.LENGTH_SHORT).show();
+            }
+
+            else if (departTimestamp.compareTo(arrivalTimestamp) < 0) {
+                Toast.makeText(this, "Please enter valid departure time", Toast.LENGTH_SHORT).show();
+            }
+
+            else {
+                DocumentReference docRef = db.collection("Users").document(emailID);
+                docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        MedicalPassRequestUser userRequest = documentSnapshot.toObject(MedicalPassRequestUser.class);
+                        userRequest.setDescription(description.getText().toString());
+                        userRequest.setArrival(arrivalTimestamp);
+                        userRequest.setDepart(departTimestamp);
+                        docRef.collection("Medical Pass Requests").add(userRequest);
+                        Toast.makeText(NewRequestActivity.this, "Request Created Successfully!", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        }
     }
 
     @Override
