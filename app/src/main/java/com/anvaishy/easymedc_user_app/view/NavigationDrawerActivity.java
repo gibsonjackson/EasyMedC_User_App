@@ -45,6 +45,7 @@ public class NavigationDrawerActivity extends AppCompatActivity {
                     Intent intent = new Intent(NavigationDrawerActivity.this, StudentProfile.class);
                     startActivity(intent);
                 }
+                finish();
             }
         };
         listView.setOnItemClickListener(itemClickListener);
