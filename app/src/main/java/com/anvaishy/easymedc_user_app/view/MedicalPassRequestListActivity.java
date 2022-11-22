@@ -63,6 +63,7 @@ public class MedicalPassRequestListActivity extends AppCompatActivity {
     public void goToNewRequest(View view) {
         Intent intent = new Intent(this, NewRequestActivity.class);
         startActivity(intent);
+        finish();
     }
 
     @Override

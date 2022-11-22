@@ -1,5 +1,8 @@
 package com.anvaishy.easymedc_user_app.view;
 
+import static java.lang.String.valueOf;
+
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -7,6 +10,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -54,6 +58,7 @@ public class NewRequestActivity extends AppCompatActivity {
     FirebaseFirestore db;
     String emailID;
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -161,15 +166,18 @@ public class NewRequestActivity extends AppCompatActivity {
     }
 
     public void createRequest(View view) {
-        if (description.getText().toString().length() == 0) {
+        Log.e("Desc: ",valueOf(description.getText().length()));
+        Log.e("Desc: ",valueOf(departTime.getText().length()));
+        Log.e("Desc: ",valueOf(arrivalTime.getText().length()));
+        if (description.getText().toString().isEmpty()) {
             Toast.makeText(this, "Please enter description", Toast.LENGTH_SHORT).show();
             description.requestFocus();
         }
-        else if (departTime.getText().toString().length() == 0) {
+        else if (departTime.getText().toString().isEmpty()) {
             Toast.makeText(this, "Please enter departure time", Toast.LENGTH_SHORT).show();
             departTime.requestFocus();
         }
-        else if (arrivalTime.getText().toString().length() == 0) {
+        else if (arrivalTime.getText().toString().isEmpty()) {
             Toast.makeText(this, "Please enter arrival time", Toast.LENGTH_SHORT).show();
             arrivalTime.requestFocus();
         }
