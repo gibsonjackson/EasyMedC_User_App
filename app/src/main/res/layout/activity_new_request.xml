@@ -19,12 +19,16 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+        android:padding="10dp"
+        android:background="@drawable/back"
         app:layout_constraintLeft_toLeftOf="parent" />
     
     <EditText
         android:hint="Arrival time"
+        android:background="@drawable/back"
+        android:padding="10dp"
         android:id="@+id/arrival_time_fill"
-        android:layout_width="200dp"
+        android:layout_width="190dp"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:clickable="false"
@@ -36,13 +40,15 @@
     <EditText
         android:hint="Depart time"
         android:id="@+id/depart_time_fill"
-        android:layout_width="200dp"
+        android:layout_width="190dp"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:focusable="false"
         android:focusableInTouchMode="false"
         android:clickable="false"
         android:cursorVisible="false"
+        android:background="@drawable/back"
+        android:padding="10dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/description_fill" />
 
@@ -50,7 +56,7 @@
         android:id="@+id/create_request"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="30dp"
         app:layout_constraintTop_toBottomOf="@id/arrival_time_fill"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
