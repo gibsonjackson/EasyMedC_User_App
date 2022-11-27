@@ -186,11 +186,11 @@ public class NewRequestActivity extends AppCompatActivity {
             Date date = new Date(System.currentTimeMillis());
             Timestamp currentTime = new Timestamp(date);
             if (departTimestamp.compareTo(currentTime) < 0) {
-                Toast.makeText(this, "Please enter valid departure time", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Please enter future valid departure time", Toast.LENGTH_SHORT).show();
             }
 
             else if (arrivalTimestamp.compareTo(departTimestamp) < 0) {
-                Toast.makeText(this, "Please enter valid arrival time", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Please enter future valid arrival time", Toast.LENGTH_SHORT).show();
             }
 
             else {
