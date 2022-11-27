@@ -7,6 +7,7 @@
         <entry key="..\:/Users/ankesssh/Desktop/SDPD USER/app/src/main/res/drawable/iconattemot.xml" value="0.106" />
         <entry key="..\:/Users/ankesssh/Desktop/SDPD USER/app/src/main/res/drawable/mybutton.xml" value="0.226" />
         <entry key="..\:/Users/ankesssh/Desktop/SDPD USER/app/src/main/res/drawable/roundimagesample.xml" value="0.106" />
+        <entry key="..\:/Users/ankesssh/Desktop/SDPD USER/app/src/main/res/layout/activity_doctor_timing.xml" value="0.23645833333333333" />
         <entry key="..\:/Users/ankesssh/Desktop/SDPD USER/app/src/main/res/layout/activity_document_upload_list.xml" value="0.23645833333333333" />
         <entry key="..\:/Users/ankesssh/Desktop/SDPD USER/app/src/main/res/layout/activity_document_view.xml" value="0.1" />
         <entry key="..\:/Users/ankesssh/Desktop/SDPD USER/app/src/main/res/layout/activity_edit_profile.xml" value="0.4" />
@@ -19,6 +20,7 @@
         <entry key="..\:/Users/ankesssh/Desktop/SDPD USER/app/src/main/res/layout/activity_single_document_upload.xml" value="0.22239583333333332" />
         <entry key="..\:/Users/ankesssh/Desktop/SDPD USER/app/src/main/res/layout/activity_student_profile.xml" value="0.23645833333333333" />
         <entry key="..\:/Users/ankesssh/Desktop/SDPD USER/app/src/main/res/layout/custombutton.xml" value="0.19316239316239317" />
+        <entry key="..\:/Users/ankesssh/Desktop/SDPD USER/app/src/main/res/layout/doctor_card.xml" value="0.264" />
         <entry key="..\:/Users/ankesssh/Desktop/SDPD USER/app/src/main/res/layout/documentcard.xml" value="0.264" />
         <entry key="..\:/Users/ankesssh/Desktop/SDPD USER/app/src/main/res/layout/google_signin.xml" value="0.23645833333333333" />
         <entry key="..\:/Users/ankesssh/Desktop/SDPD USER/app/src/main/res/layout/medical_pass_request_card.xml" value="0.23645833333333333" />

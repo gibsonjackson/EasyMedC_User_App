@@ -4,16 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="100dp"
+    android:layout_height="wrap_content"
     android:layout_margin="10dp"
     android:layout_gravity="center"
     app:layout_anchorGravity="center"
-    app:cardCornerRadius="10dp">
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    app:cardCornerRadius="10dp"
+    android:id="@+id/requestCard"
+    >
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
+        android:layout_height="match_parent"
+        android:orientation="vertical">
         <TextView
             android:id="@+id/med_pass_desc"
             android:layout_width="match_parent"
@@ -29,6 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
+            android:text="Depart time"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="parent" />
 
@@ -38,8 +40,10 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:textColor="@color/black"
-            android:text="hello"
+            android:text="Arrival Time"
             app:layout_constraintTop_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"/>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
 </androidx.cardview.widget.CardView>

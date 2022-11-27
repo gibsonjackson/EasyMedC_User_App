@@ -214,8 +214,8 @@ public class NewRequestActivity extends AppCompatActivity {
                         User currentUser = documentSnapshot.toObject(User.class);
                         MedicalPassRequestGlobal globalRequest = new MedicalPassRequestGlobal();
                         globalRequest.setName(currentUser.getName());
-                        globalRequest.setUid(currentUser.getStudentID());
-                        globalRequest.setPhoneNo(currentUser.getStudentPhoneNo());
+                        globalRequest.setUid(currentUser.getEmail());
+                        globalRequest.setPhoneNo(currentUser.getStudentPhoneNo()==null?currentUser.getStudentPhoneNo():"No Contact Provided");
                         globalRequest.setDescription(description.getText().toString());
                         globalRequest.setStatus(0);
                         globalRequest.setArrival(arrivalTimestamp);
