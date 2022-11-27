@@ -152,11 +152,8 @@ public class EditProfileActivity extends AppCompatActivity {
 
     // Needs some more work in hostel room code checking
     public boolean validateRoomNo (String str) {
-        if (str.length() == 4) {
-            return Character.isUpperCase(str.charAt(0)) && Character.isDigit(str.charAt(1)) && Character.isDigit(str.charAt(2)) && Character.isDigit(str.charAt(3));
-        }
-        else if (str.length() == 5) {
-            return Character.isUpperCase(str.charAt(0)) && Character.isUpperCase(str.charAt(1)) && Character.isDigit(str.charAt(2)) && Character.isDigit(str.charAt(3)) && Character.isDigit(str.charAt(4));
+        if (str.length() == 3) {
+            return Character.isDigit(str.charAt(0)) && Character.isDigit(str.charAt(1)) && Character.isDigit(str.charAt(2));
         }
         return false;
     }
