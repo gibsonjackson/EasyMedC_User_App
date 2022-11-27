@@ -22,8 +22,11 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/main_toolbar"
-
+        android:background="@drawable/back"
         android:gravity="center_vertical"
+        android:textColor="@color/black"
+        android:drawableStart="@drawable/outline_person_24"
+        android:drawablePadding="5dp"
         android:text="Name: " />
 
     <TextView
@@ -38,8 +41,11 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/name"
-
+        android:background="@drawable/back"
         android:gravity="center_vertical"
+        android:textColor="@color/black"
+        android:drawableStart="@drawable/outline_badge_24"
+        android:drawablePadding="5dp"
         android:text="Student ID: "/>
 
     <TextView
@@ -54,8 +60,11 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/student_id"
-
+        android:background="@drawable/back"
         android:gravity="center_vertical"
+        android:textColor="@color/black"
+        android:drawableStart="@drawable/outline_apartment_24"
+        android:drawablePadding="5dp"
         android:text="Hostel: "/>
 
     <TextView
@@ -70,8 +79,11 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/hostel"
-
+        android:background="@drawable/back"
         android:gravity="center_vertical"
+        android:textColor="@color/black"
+        android:drawableStart="@drawable/outline_meeting_room_24"
+        android:drawablePadding="5dp"
         android:text="Room No: "/>
 
     <TextView
@@ -86,8 +98,11 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/room_no"
-
+        android:background="@drawable/back"
         android:gravity="center_vertical"
+        android:textColor="@color/black"
+        android:drawableStart="@drawable/outline_phone_24"
+        android:drawablePadding="5dp"
         android:text="Student Phone No: "/>
 
     <TextView
@@ -102,8 +117,11 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/student_phone"
-
+        android:background="@drawable/back"
         android:gravity="center_vertical"
+        android:textColor="@color/black"
+        android:drawableStart="@drawable/outline_contact_phone_24"
+        android:drawablePadding="5dp"
         android:text="Guardian Phone No: "/>
 
     <TextView
@@ -118,8 +136,11 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/guardian_phone"
-
+        android:background="@drawable/back"
         android:gravity="center_vertical"
+        android:textColor="@color/black"
+        android:drawableStart="@drawable/outline_email_24"
+        android:drawablePadding="5dp"
         android:text="Email: "/>
 
     <Button
