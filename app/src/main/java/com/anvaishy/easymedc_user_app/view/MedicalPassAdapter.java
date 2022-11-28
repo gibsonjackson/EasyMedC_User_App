@@ -48,6 +48,7 @@ public class MedicalPassAdapter extends FirestoreRecyclerAdapter<MedicalPassRequ
             holder.status.setCardBackgroundColor(Color.rgb(72, 198, 57));
         }
         else if (request.getStatus() == 0) {
+            holder.description.setTextColor(Color.BLACK);
             holder.status.setCardBackgroundColor(Color.rgb(224, 227, 231));
         }
     }
