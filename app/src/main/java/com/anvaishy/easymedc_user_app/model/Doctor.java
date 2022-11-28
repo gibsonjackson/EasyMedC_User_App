@@ -2,23 +2,18 @@ package com.anvaishy.easymedc_user_app.model;
 
 
 public class Doctor {
-    private final String docID;
     private final String name;
     private final String specialisation;
     private String startTime;
     private String endTime;
 
-    public Doctor(String n, String sp, String s, String e, String id) {
+    public Doctor(String n, String sp, String s, String e) {
         name = n;
         specialisation = sp;
         startTime = s;
         endTime = e;
-        docID = id;
     }
 
-    public String getDocID() {
-        return docID;
-    }
 
     public String getName() {
         return name;
