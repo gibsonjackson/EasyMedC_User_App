@@ -194,6 +194,8 @@ public class NewRequestActivity extends AppCompatActivity {
             }
 
             else {
+                Date data = new Date(System.currentTimeMillis());
+                String docID = data.toString();
                 DocumentReference docRef = db.collection("Users").document(emailID);
                 docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override
@@ -202,7 +204,7 @@ public class NewRequestActivity extends AppCompatActivity {
                         userRequest.setDescription(description.getText().toString());
                         userRequest.setArrival(arrivalTimestamp);
                         userRequest.setDepart(departTimestamp);
-                        docRef.collection("Medical Pass Requests").add(userRequest);
+                        docRef.collection("Medical Pass Requests").document(docID).set(userRequest);
                         Toast.makeText(NewRequestActivity.this, "Request Created Successfully!", Toast.LENGTH_SHORT).show();
                     }
                 });
@@ -220,10 +222,14 @@ public class NewRequestActivity extends AppCompatActivity {
                         globalRequest.setStatus(0);
                         globalRequest.setArrival(arrivalTimestamp);
                         globalRequest.setDepart(departTimestamp);
-                        db.collection("Medical Pass Requests").add(globalRequest);
+                        db.collection("Medical Pass Requests").document(docID).set(globalRequest);
                     }
                 });
             }
+            Intent intent = new Intent(NewRequestActivity.this,MedicalPassRequestListActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            finish();
         }
     }
 

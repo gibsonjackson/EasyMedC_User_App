@@ -54,7 +54,7 @@ public class MedicalPassRequestListActivity extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
         recyclerView = findViewById(R.id.medical_pass_request_list);
         recyclerView.setLayoutManager(new LinearLayoutManager(MedicalPassRequestListActivity.this));
-        Query query = db.collection("Users").document(emailID).collection("Medical Pass Requests");
+        Query query = db.collection("Users").document(emailID).collection("Medical Pass Requests").orderBy("status");
         FirestoreRecyclerOptions<MedicalPassRequestUser> options = new FirestoreRecyclerOptions.Builder<MedicalPassRequestUser>().setQuery(query, MedicalPassRequestUser.class).build();
         adapter = new MedicalPassAdapter(options);
         recyclerView.setAdapter(adapter);
