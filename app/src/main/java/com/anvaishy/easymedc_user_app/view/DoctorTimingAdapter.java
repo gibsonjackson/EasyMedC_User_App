@@ -23,7 +23,6 @@ public class DoctorTimingAdapter extends FirestoreRecyclerAdapter<Doctor, Doctor
 
     @Override
     protected void onBindViewHolder(@NonNull DoctorViewHolder holder, int pos, @NonNull Doctor request) {
-        Log.e("r",request.getName());
         holder.name.setText(request.getName());
         holder.spec.setText(request.getSpecialisation());
         holder.arrival.setText(request.getStartTime());

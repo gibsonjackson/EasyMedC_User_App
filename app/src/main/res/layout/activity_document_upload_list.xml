@@ -26,7 +26,7 @@
     <ListView
         android:id="@+id/docList"
         android:layout_width="350dp"
-        android:layout_height="605dp"
+        android:layout_height="0dp"
         android:divider="@null"
         android:dividerHeight="10dp"
         android:foregroundGravity="center"
