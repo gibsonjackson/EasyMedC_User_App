@@ -1,49 +1,59 @@
 package com.anvaishy.easymedc_user_app.view;
 
-import android.graphics.Color;
-import android.util.Log;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.annotation.Nullable;
 
 import com.anvaishy.easymedc_user_app.R;
 import com.anvaishy.easymedc_user_app.model.Doctor;
-import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
-import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.anvaishy.easymedc_user_app.model.Document;
 
-public class DoctorTimingAdapter extends FirestoreRecyclerAdapter<Doctor, DoctorTimingAdapter.DoctorViewHolder> {
-    public DoctorTimingAdapter(@NonNull FirestoreRecyclerOptions<Doctor> options) {
-        super(options);
+import java.util.ArrayList;
+
+public class DoctorTimingAdapter extends ArrayAdapter<Doctor> {
+
+    public DoctorTimingAdapter(@NonNull Context context, ArrayList<Doctor> dataModalArrayList) {
+        super(context, 0, dataModalArrayList);
     }
-
-    @Override
-    protected void onBindViewHolder(@NonNull DoctorViewHolder holder, int pos, @NonNull Doctor request) {
-        holder.name.setText(request.getName());
-        holder.spec.setText(request.getSpecialisation());
-        holder.arrival.setText(request.getStartTime());
-        holder.depart.setText(request.getEndTime());
-    }
-
     @NonNull
     @Override
-    public DoctorViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.doctor_card, parent, false);
-        return new DoctorTimingAdapter.DoctorViewHolder(view);
-    }
-
-    class DoctorViewHolder extends RecyclerView.ViewHolder {
-        TextView name,spec, arrival, depart;
-        public DoctorViewHolder(@NonNull View itemView) {
-            super(itemView);
-            name = itemView.findViewById(R.id.name);
-            arrival = itemView.findViewById(R.id.start);
-            depart = itemView.findViewById(R.id.end);
-            spec = itemView.findViewById(R.id.spec);
+    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+        // below line is use to inflate the
+        // layout for our item of list view.
+        View listitemView = convertView;
+        if (listitemView == null) {
+            listitemView = LayoutInflater.from(getContext()).inflate(R.layout.doctor_card, parent, false);
         }
+
+        // after inflating an item of listview item
+        // we are getting data from array list inside
+        // our modal class.
+        Doctor dataModal = getItem(position);
+
+        // initializing our UI components of list view item.
+        TextView name = listitemView.findViewById(R.id.name);
+        TextView spec = listitemView.findViewById(R.id.spec);
+
+        TextView start = listitemView.findViewById(R.id.start);
+        TextView end = listitemView.findViewById(R.id.end);
+
+        // after initializing our items we are
+        // setting data to our view.
+        // below line is use to set data to our text view.
+        name.setText(dataModal.getName());
+        spec.setText(dataModal.getSpecialisation());
+        start.setText(dataModal.getStartTime());
+        end.setText(dataModal.getEndTime());
+        return listitemView;
     }
 }
