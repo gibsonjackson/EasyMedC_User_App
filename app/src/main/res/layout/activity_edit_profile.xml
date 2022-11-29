@@ -32,14 +32,14 @@
         android:layout_height="wrap_content"
         android:textColor="@color/black"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_margin="10dp"
+        android:layout_margin="15dp"
         android:padding="10dp"
         android:text="Room No: " />
 
     <EditText
         android:id="@+id/room_no_edit"
         android:layout_width="292dp"
-        android:layout_height="40dp"
+        android:layout_height="45dp"
         app:layout_constraintStart_toEndOf="@+id/room_no_label"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/hostel_options"
@@ -50,7 +50,7 @@
         android:id="@+id/student_phone_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="15dp"
         android:padding="10dp"
         android:textColor="@color/black"
         android:text="Student Phone No: "
@@ -60,7 +60,7 @@
     <EditText
         android:id="@+id/student_phone_edit"
         android:layout_width="240dp"
-        android:layout_height="40dp"
+        android:layout_height="45dp"
         android:layout_margin="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/student_phone_label"
@@ -70,7 +70,7 @@
         android:id="@+id/guardian_phone_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="15dp"
         android:padding="10dp"
         android:textColor="@color/black"
         android:text="Guardian Phone No: "
@@ -80,7 +80,7 @@
     <EditText
         android:id="@+id/guardian_phone_edit"
         android:layout_width="240dp"
-        android:layout_height="40dp"
+        android:layout_height="45dp"
         android:layout_margin="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/guardian_phone_label"

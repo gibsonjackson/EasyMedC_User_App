@@ -40,24 +40,24 @@ public class MedicalPassAdapter extends FirestoreRecyclerAdapter<MedicalPassRequ
         holder.depart.setTextColor(Color.BLACK);
         if(request.getStatus()==2){
             holder.status.setCardBackgroundColor(Color.rgb(228, 59, 59));
+            holder.desc.setCardBackgroundColor(Color.rgb(224, 1, 1));
             holder.description.setTextColor(Color.rgb(224, 227, 231));
             holder.arrival.setTextColor(Color.rgb(224, 227, 231));
             holder.depart.setTextColor(Color.rgb(224, 227, 231));
         }
         else if(request.getStatus()==1){
             holder.status.setCardBackgroundColor(Color.rgb(72, 198, 57));
+            holder.desc.setCardBackgroundColor(Color.rgb(64, 180, 50));
             holder.description.setTextColor(Color.BLACK);
             holder.arrival.setTextColor(Color.BLACK);
             holder.depart.setTextColor(Color.BLACK);
         }
         else if (request.getStatus() == 0) {
-
             holder.status.setCardBackgroundColor(Color.rgb(224, 227, 231));
+            holder.desc.setCardBackgroundColor(Color.rgb(215, 218, 222));
             holder.description.setTextColor(Color.BLACK);
             holder.arrival.setTextColor(Color.BLACK);
             holder.depart.setTextColor(Color.BLACK);
-
-
         }
     }
 
@@ -71,12 +71,14 @@ public class MedicalPassAdapter extends FirestoreRecyclerAdapter<MedicalPassRequ
     class MedicalViewHolder extends RecyclerView.ViewHolder {
         TextView description, arrival, depart;
         CardView status;
+        CardView desc;
         public MedicalViewHolder(@NonNull View itemView) {
             super(itemView);
             description = itemView.findViewById(R.id.med_pass_desc);
             arrival = itemView.findViewById(R.id.arrival_time);
             depart = itemView.findViewById(R.id.depart_time);
             status = itemView.findViewById(R.id.requestCard);
+            desc = itemView.findViewById(R.id.desc_card);
         }
     }
 }
