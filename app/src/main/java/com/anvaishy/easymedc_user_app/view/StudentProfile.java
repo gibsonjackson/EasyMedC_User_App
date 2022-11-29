@@ -58,7 +58,7 @@ public class StudentProfile extends AppCompatActivity implements ActivityCompat.
     private Boolean locGrant = false;
     private FusedLocationProviderClient fusedLocationClient;
     private String FCM_API = "https://fcm.googleapis.com/fcm/send";
-    private String serverKey = "key=AAAAAIwf2j0:APA91bE2zUb4Lj1o7p4yYlbaKZwPjtuI0v5oEef6HOJPui5BMYslwTYeu-a1_265v3uK7Nw_mQvFZIlIIig5HyBJ8bUiDLAbHt4EF94d85485o_qWPqKIQgbc0S9Qq33v8BvyN7ol-0";
+    private String serverKey = "key=AAAAAIwf2j0:APA91bE2zUb4Lj1o7p4yYlbgaKZwPjtuI0v5oEef6HOJPui5BMYslwTYeu-a1_265v3uK7Nw_mQvFZIlIIig5HyBJ8bUiDLAbHt4EF94d85485o_qWPqKIQgbc0S9Qq33v8BvyN7ol-0";
     private String contentType = "application/json";
 
     @Override
