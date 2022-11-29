@@ -23,7 +23,20 @@
         app:layout_constraintStart_toStartOf="parent"
 
         app:layout_constraintTop_toBottomOf="@+id/main_toolbar"
-        app:layout_constraintVertical_bias="0.58"></ListView>
+        app:layout_constraintVertical_bias="0.58"/>
+
+    <ListView
+    android:id="@+id/doctorList"
+    android:layout_width="325dp"
+    android:layout_height="600dp"
+    android:divider="@null"
+    android:dividerHeight="10dp"
+    android:foregroundGravity="center"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/main_toolbar"
+    app:layout_constraintVertical_bias="0.12" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:layout_width="wrap_content"
