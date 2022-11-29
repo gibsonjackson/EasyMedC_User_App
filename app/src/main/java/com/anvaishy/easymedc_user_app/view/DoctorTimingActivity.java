@@ -264,7 +264,7 @@ public class DoctorTimingActivity extends AppCompatActivity {
                         String docurl = (String) d.get("specialisation");
                         String start = (String) d.get("startTime");
                         String end = (String) d.get("endTime");
-                        Doctor dataModal = new Doctor(docname, docurl,start,end, d.getId());
+                        Doctor dataModal = new Doctor(docname, docurl,start,end);
                         // after getting data from Firebase we are
                         // storing that data in our array list
                         dataModalArrayList.add(dataModal);

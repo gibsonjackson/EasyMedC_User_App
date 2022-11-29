@@ -99,7 +99,7 @@ public class DocumentUploadList extends AppCompatActivity {
         // below line is use to initialize our variables
         DocumentListView = findViewById(R.id.docList);
         dataModalArrayList = new ArrayList<>();
-
+        db = FirebaseFirestore.getInstance();
         // To go in StudentProfileVM
         FirebaseAuth firebaseAuth;
         firebaseAuth = FirebaseAuth.getInstance();
